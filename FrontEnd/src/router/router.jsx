@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Root,{loader as rootLoader, action as rootAction} from './routes/Root';
 import ErrorScreen from './routes/ErrorScreen';
-import Services from './routes/Services';
+import Services,{loader as serviceLoader} from './routes/Services';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +14,7 @@ const router = createBrowserRouter([
       {
         path: 'services/:serviceId',
         element: <Services />,
+        loader: serviceLoader,
       },
     ],
   },

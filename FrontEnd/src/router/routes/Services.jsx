@@ -1,7 +1,25 @@
 import React from 'react';
+import { Form, useLoaderData } from 'react-router-dom';
 import appLogo from '../../assets/service.png';
+import axios from 'axios';
 
-function Services({ service }) {
+export async function loader({ params }) {
+  try {
+    const response = await axios.get(
+      `http://localhost:3000/services/${params.serviceId}`
+    );
+    const service = response.data; // Extract data from the response
+    return { service }; // Return the services data
+  } catch (error) {
+    console.error('🚀 ~ loader ~ error:', error); // Better use of console.error
+    // Handle error (returning an empty object or a specific error structure might be useful)
+    return { service: {} }; // Returning an empty array as a fallback
+  }
+}
+
+function Services() {
+  const { service } = useLoaderData();
+
   return (
     <div className='bg-white shadow-md rounded-lg p-3 max-w-md mx-auto my-8'>
       <div className='text-center mb-6'>
