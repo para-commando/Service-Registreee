@@ -1,4 +1,4 @@
-import { Outlet, Link, useLoaderData, Form } from 'react-router-dom';
+import { Outlet, Link, useLoaderData, Form, NavLink } from 'react-router-dom';
 import plusIcon from '../../assets/plus.png';
 import SearchIcon from '../../assets/magnifier.png';
 import appLogo from '../../assets/service.png';
@@ -77,14 +77,20 @@ export default function Root() {
               <ul className='mr-7 flex flex-col gap-2'>
                 {services.map((item) => {
                   return (
-                    <Link
+                    <NavLink
                       to={`services/${item.id}`}
-                      className='text-white font-semibold transition duration-300 ease-in-out transform hover:scale-105'
+                      className={({ isActive, isPending }) => {
+                        return isActive
+                          ? 'text-white font-semibold transition duration-300 ease-in-out transform scale-110'
+                          : isPending
+                          ? 'text-blue-600 font-semibold transition duration-700 ease-in-out transform'
+                          : '';
+                      }}
                     >
                       <li className='mb-2 bg-slate-900 rounded-2xl p-3 hover:bg-black '>
                         {item.name}
                       </li>
-                    </Link>
+                    </NavLink>
                   );
                 })}
               </ul>
@@ -95,8 +101,19 @@ export default function Root() {
             )}
           </nav>
         </div>
-        <div id='detail' className='flex-1 p-6 bg-gray-100 h-[100vh]'>
-          <Outlet />
+        <div
+          id='detail'
+          className={
+            navigation.state === 'loading'
+              ? 'flex items-center justify-center h-[100vh]'
+              : 'flex-1 p-6 bg-gray-100 h-[100vh]'
+          }
+        >
+          {navigation.state === 'loading' ? (
+            <div className='animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500'></div>
+          ) : (
+            <Outlet />
+          )}
         </div>
       </div>
     </>
