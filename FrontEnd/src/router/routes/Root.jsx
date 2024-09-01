@@ -17,7 +17,6 @@ export async function loader() {
   }
 }
 export async function action() {
-  debugger;
   const services = { name: 'Service', id: 4 };
   return { name: 'Service', id: 4 };
 }

@@ -1,7 +1,21 @@
 import React from 'react';
-import { Form, useLoaderData } from 'react-router-dom';
+import { Form, useLoaderData, redirect, useNavigate } from 'react-router-dom';
 import appLogo from '../../assets/service.png';
 import axios from 'axios';
+
+export async function updateService(payload, serviceId) {
+  try {
+    const response = await axios.patch(
+      `http://localhost:3000/services/${serviceId}`,
+      payload
+    );
+    const service = response.data; // Extract data from the response
+    return { service }; // Return the services data
+  } catch (error) {
+    console.error('🚀 ~ loader ~ error:', error);
+    throw new Error('Data updating process failed');
+  }
+}
 
 export async function loader({ params }) {
   try {
@@ -18,6 +32,8 @@ export async function loader({ params }) {
 }
 
 function Services() {
+  const navigate = useNavigate(); // Get the navigate function from React Router
+
   const { service } = useLoaderData();
 
   return (
@@ -40,7 +56,12 @@ function Services() {
         )}
 
         <div className='flex justify-evenly items-center'>
-          <button className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition hover:scale-105 font-semibold'>
+          <button
+            className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition hover:scale-105 font-semibold'
+            onClick={() => {
+              navigate(`/services/${service.id}/edit`);
+            }}
+          >
             Edit Service
           </button>
           <button
