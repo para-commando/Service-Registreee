@@ -5,10 +5,16 @@ import Services, { loader as serviceLoader } from './routes/Services';
 import EditService, { action as serviceAction } from './routes/EditService';
 import CreateService, { action as createAction } from './routes/CreateService';
 import Index from './routes/Index';
- 
+import AuthScreen from './routes/AuthScreen';
+
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/login',
+    element: <AuthScreen />,
+    errorElement: <ErrorScreen />,
+  },
+  {
+    path: '/home',
     element: <Root />,
     errorElement: <ErrorScreen />,
     loader: rootLoader,
@@ -31,6 +37,10 @@ const router = createBrowserRouter([
         action: createAction,
       },
     ],
+  },
+  {
+    path: '/',
+    errorElement: <ErrorScreen />,
   },
 ]);
 

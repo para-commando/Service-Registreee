@@ -9,7 +9,7 @@ export default function Index() {
           Easily manage and register your services with our intuitive platform.
         </p>
         <a
-          href='/services/create'
+          href='/home/services/create'
           className='inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out'
         >
           Add Service

@@ -33,7 +33,6 @@ export async function loader({ request }) {
 
     return { services }; // Return the services data
   } catch (error) {
-    console.error('🚀 ~ loader ~ error:', error); // Better use of console.error
     // Handle error (returning an empty object or a specific error structure might be useful)
     return { services: [] }; // Returning an empty array as a fallback
   }
@@ -49,9 +48,8 @@ export default function Root() {
     const value = event.target.value;
     setInputValue(value);
     submit(event.currentTarget.form);
-    
   };
-  // const submit = useSubmit();
+  const submit = useSubmit();
   return (
     <>
       <div className='flex h-full'>
@@ -61,7 +59,7 @@ export default function Root() {
         >
           <div className='flex justify-evenly items-center mb-1'>
             <h1 className='text-2xl font-bold '>Service Registree</h1>
-            <Link to={`/`}>
+            <Link to={`/login`}>
               {' '}
               <img
                 src={appLogo}
@@ -99,7 +97,7 @@ export default function Root() {
                 className='w-10 h-10 cursor-pointer duration-300 ease-in-out transform hover:scale-125'
                 alt=''
                 onClick={() => {
-                  navigate(`/services/create`);
+                  navigate(`/home/services/create`);
                 }}
               />
             </div>

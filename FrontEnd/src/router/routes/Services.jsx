@@ -12,7 +12,6 @@ export async function createServiceApiCall(payload) {
     const service = response.data; // Extract data from the response
     return { service }; // Return the services data
   } catch (error) {
-    console.error('🚀 ~ loader ~ error:', error);
     throw new Error('Data creating process failed');
   }
 }
@@ -26,8 +25,6 @@ export async function updateService(payload, serviceId) {
     const service = response.data; // Extract data from the response
     return { service }; // Return the services data
   } catch (error) {
-    debugger
-    console.error('🚀 ~ loader ~ error:', error);
     throw new Error('Data updating process failed');
   }
 }
@@ -40,7 +37,6 @@ export async function loader({ params }) {
     const service = response.data; // Extract data from the response
     return { service }; // Return the services data
   } catch (error) {
-    console.error('🚀 ~ loader ~ error:', error); // Better use of console.error
     // Handle error (returning an empty object or a specific error structure might be useful)
     return { service: {} }; // Returning an empty array as a fallback
   }
@@ -56,13 +52,11 @@ function Services() {
     }
     try {
       await axios.delete(`http://localhost:3000/services/${serviceId}`);
-      // Refresh the current route to update the list of services
-      navigate('.', { replace: true });
 
-      // Then redirect to the home page
-      navigate('/');
+      navigate('/home',{replace:true});
+      navigate('/home');
+      return;
     } catch (error) {
-      console.error('🚀 ~ loader ~ error:', error);
       throw new Error('Data deletion process failed');
     }
   };
@@ -84,7 +78,9 @@ function Services() {
           </h1>
 
           {service?.description && (
-            <p className='text-gray-600 mb-4'>Description: {service?.description}</p>
+            <p className='text-gray-600 mb-4'>
+              Description: {service?.description}
+            </p>
           )}
 
           {service?.address && (
@@ -97,7 +93,7 @@ function Services() {
             <button
               className='bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition hover:scale-105 font-semibold'
               onClick={() => {
-                navigate(`/services/${service.id}/edit`);
+                navigate(`/home/services/${service.id}/edit`);
               }}
             >
               Edit Service
