@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Delete, Patch, Body } from '@nestjs/common';
+import { Controller, Get, Param, Delete, Patch, Body, Post } from '@nestjs/common';
 import { ServiceService } from './service.service';
 import { Service } from './service.entity';
 
@@ -28,4 +28,10 @@ export class ServiceController {
   ): Promise<Service> {
     return this.serviceService.update(Number(id), updateData);
   }
+
+  @Post()
+  create(@Body() createServiceDto: Partial<Service>): Promise<Service> {
+    return this.serviceService.create(createServiceDto);
+  }
+
 }

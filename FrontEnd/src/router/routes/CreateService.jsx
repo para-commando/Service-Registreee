@@ -1,20 +1,19 @@
-import { Form, useLoaderData, redirect, useNavigate } from 'react-router-dom';
-import { updateService } from './Services';
-export async function action({ request, params }) {
+import { Form, redirect, useNavigate } from 'react-router-dom';
+import { createServiceApiCall } from './Services';
+export async function action({ request }) {
   const formData = await request.formData();
-  const updates = Object.fromEntries(formData);
+  const cratePayload = Object.fromEntries(formData);
+  cratePayload.is_active = true;
+  const { service } = await createServiceApiCall(cratePayload);
 
-  await updateService(updates, params.serviceId);
-  return redirect(`/services/${params.serviceId}/`);
+  return redirect(`/services/${service.id}/`);
 }
-
-function EditService() {
-  const { service } = useLoaderData();
+function CreateService() {
   const navigate = useNavigate(); // Get the navigate function from React Router
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen bg-gradient-to-r from-blue-600 to-indigo-950'>
-      <h1 className='font-semibold text-5xl text-white mb-10'>Edit Service</h1>
+    <div className='flex flex-col items-center justify-center h-screen bg-gradient-to-br from-blue-400 to-blue-900'>
+      <h1 className='font-semibold text-5xl mb-10 text-white'>Add Service</h1>
       <Form
         method='post'
         id='contact-form'
@@ -29,7 +28,7 @@ function EditService() {
             aria-label='Service name'
             type='text'
             name='name'
-            defaultValue={service?.name}
+            defaultValue=''
             className='w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500'
           />
         </div>
@@ -42,7 +41,7 @@ function EditService() {
             type='text'
             name='description' // Changed to remove space in the name attribute
             placeholder='This is a description of the service'
-            defaultValue={service?.description}
+            defaultValue=''
             className='w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500'
           />
         </div>
@@ -77,16 +76,16 @@ function EditService() {
             type='submit'
             className='bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500'
           >
-            Save Changes
+            Add
           </button>
           <button
             type='button'
             className='bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500'
             onClick={() => {
-              navigate(`/services/${service.id}`);
+              navigate(`/`);
             }}
           >
-            Discard Changes
+            Discard
           </button>
         </div>
       </Form>
@@ -94,4 +93,4 @@ function EditService() {
   );
 }
 
-export default EditService;
+export default CreateService;
