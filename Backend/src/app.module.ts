@@ -19,7 +19,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     entities: [__dirname + '/**/*.entity{.ts,.js}'],
-    synchronize: true, // Use this only in development
+    
   }),
   ServiceModule,],
   controllers: [AppController],

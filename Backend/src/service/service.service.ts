@@ -26,4 +26,8 @@ export class ServiceService {
     await this.serviceRepository.update(id, updateData);
     return this.serviceRepository.findOne({ where: { id } });
   }
+  async create(createServiceDto: Partial<Service>): Promise<Service> {
+    const service = this.serviceRepository.create(createServiceDto);
+    return this.serviceRepository.save(service);
+  }
 }
