@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {}
+
+@media (max-width: 1100px) {
+    .mainDiv-media-query-main-div-1100 {
+        @apply flex-col;
+
+    }
+    .sidebar-media-query-div-1100 {
+        @apply w-[100vw] h-auto
+    }
+    .servicesList-media-query-ul-1100 {
+        @apply flex-row overflow-auto w-[95vw] gap-7 scale-100
+    }
+
+    .service-media-query-ul-1100 {
+        @apply  flex-row overflow-auto w-[95vw]
+    }
+
+    .showService-media-query-ul-1100 {
+        @apply  w-[80vw]
+    }
+
+    .addService-media-query-ul-1100 {
+        @apply  w-[80vw]
+    }
+
+    .editService-media-query-ul-1100{
+        @apply  w-[80vw] 
+    }
+}
+
+ 

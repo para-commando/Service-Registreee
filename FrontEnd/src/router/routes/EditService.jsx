@@ -41,14 +41,13 @@ function EditService() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
+     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
+      e.preventDefault();
       setErrors(validationErrors);
-    } else {
-      setErrors({});
-      // Proceed with form submission logic here
     }
+    setErrors({});
+    // Proceed with form submission logic here
   };
 
   const handleChange = (e) => {
@@ -63,7 +62,7 @@ function EditService() {
       <Form
         method='post'
         id='contact-form'
-        className='w-[30vw] mx-auto p-6 bg-white shadow-md rounded-lg'
+        className='w-[30vw] mx-auto p-6 bg-white shadow-md rounded-lg editService-media-query-ul-1100'
         onSubmit={handleSubmit}
       >
         <div className='mb-4'>
