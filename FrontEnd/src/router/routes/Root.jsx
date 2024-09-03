@@ -52,12 +52,15 @@ export default function Root() {
   const submit = useSubmit();
   return (
     <>
-      <div className='flex h-full'>
+      <div
+        id='mainDiv'
+        className='flex h-full mainDiv-media-query-main-div-1100'
+      >
         <div
           id='sidebar'
-          className='w-[24vw] bg-gray-800 text-white pt-4 pl-5 pb-3 h-[100vh]'
+          className='w-[24vw] bg-gray-800 text-white pt-4 pl-5 pb-3 h-[100vh] sidebar-media-query-div-1100'
         >
-          <div className='flex justify-evenly items-center mb-1'>
+          <div className='flex gap-5 items-center mb-1'>
             <h1 className='text-2xl font-bold '>Service Registree</h1>
             <Link to={`/login`}>
               {' '}
@@ -106,12 +109,16 @@ export default function Root() {
             <div className='text-red-500 text-sm mt-1'>{errorMessage}</div>
           )}
 
-          <nav className='mt-3'>
+          <nav className='mt-3 h-[80%] overflow-auto '>
             {services.length ? (
-              <ul className='mr-7 flex flex-col gap-2'>
+              <ul
+                id='servicesList'
+                className='mr-7 flex flex-col gap-2 servicesList-media-query-ul-1100'
+              >
                 {services.map((item) => {
                   return (
                     <NavLink
+                      id='service'
                       to={`services/${item.id}`}
                       className={({ isActive, isPending }) => {
                         return isActive
@@ -121,7 +128,7 @@ export default function Root() {
                           : '';
                       }}
                     >
-                      <li className='mb-2 bg-slate-900 rounded-2xl p-3 hover:bg-black '>
+                      <li className='mb-2 bg-slate-900 rounded-2xl p-3 hover:bg-black min-w-24 text-center break-words'>
                         {item.name}
                       </li>
                     </NavLink>
@@ -138,12 +145,12 @@ export default function Root() {
         <div
           id='detail'
           className={
-            navigation.state === 'loading'
+            navigate.state === 'loading'
               ? 'flex items-center justify-center h-[100vh]'
               : 'flex-1 bg-gray-100 h-[100vh]'
           }
         >
-          {navigation.state === 'loading' ? (
+          {navigate.state === 'loading' ? (
             <div className='animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500'></div>
           ) : (
             <Outlet />

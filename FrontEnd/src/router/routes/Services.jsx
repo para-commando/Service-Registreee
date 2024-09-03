@@ -63,7 +63,7 @@ function Services() {
 
   return (
     <div className='flex flex-col items-center justify-center h-screen bg-gradient-to-r from-orange-600 to-gray-200 w-full'>
-      <div className='bg-white rounded-lg p-3 w-[30vw]   mx-auto my-8'>
+      <div id="showService" className='bg-white rounded-lg p-3 w-[30vw]   mx-auto my-8 showService-media-query-ul-1100'>
         <div className='text-center mb-6'>
           <img
             className='w-32 h-32 mx-auto rounded-full border-4 border-blue-500 p-1 duration-300 ease-in-out transform hover:scale-105'
@@ -73,21 +73,21 @@ function Services() {
         </div>
 
         <div className='text-center'>
-          <h1 className='text-2xl font-bold mb-2 text-gray-800'>
+          <h1 className='text-2xl font-bold mb-2 text-gray-800 break-words'>
             {service?.name || <i>No Service Name</i>}
           </h1>
 
           {service?.description && (
-            <p className='text-gray-600 mb-4'>
+            <p className='text-gray-600 mb-4 break-words'>
               Description: {service?.description}
             </p>
           )}
 
           {service?.address && (
-            <p className='text-gray-600 mb-4'>Address: {service?.address}</p>
+            <p className='text-gray-600 mb-4 break-words'>Address: {service?.address}</p>
           )}
           {service?.contact && (
-            <p className='text-gray-600 mb-4'>Contact: {service?.contact}</p>
+            <p className='text-gray-600 mb-4 break-words'>Contact: {service?.contact}</p>
           )}
           <div className='flex justify-evenly items-center'>
             <button
