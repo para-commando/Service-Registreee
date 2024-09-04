@@ -103,14 +103,14 @@ cd BackEnd
 npm run start:dev
 ```
 
-Start the Frontend Server:
+### Start the Frontend Server:
 
 ```bash
 cd FrontEnd
 npm run dev
 ```
 
-Open http://localhost:8080/login in your browser.
+Open http://127.0.0.1:5173/login in your browser of choice.
 
 ## Project Structure
 
