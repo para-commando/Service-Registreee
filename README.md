@@ -3,10 +3,18 @@
 Service Registree is a full-stack web application designed to manage any service-related details efficiently. It allows users to create, read, update, and delete (CRUD) services, offering a seamless user experience for managing services in a centralized platform.
 
 ## Demo
+https://github.com/user-attachments/assets/d61e271c-3dd3-4603-b662-896499c9ea5d
 
 ## Web View
+![image](https://github.com/user-attachments/assets/3b4a006b-94e2-4ac5-bd0c-fa62ace10af5)
+
+![image](https://github.com/user-attachments/assets/54c59a60-c9ee-41c2-ae48-a6a368959d6a)
 
 ## Mobile View
+![image](https://github.com/user-attachments/assets/a78f5015-2322-4338-a4fc-2fc69a55f685)
+
+![image](https://github.com/user-attachments/assets/6b2ad6fe-bbcd-4477-be46-5468212e4cbb)
+
 
 ## Table of Contents
 - [Project Overview](#project-overview)
