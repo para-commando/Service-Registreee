@@ -94,15 +94,6 @@ DB_PASSWORD=your_database_password
 DB_DATABASE=your_database
 ```
 
-
-### Frontend
-
-Update the API base URL in the frontend code to point to your backend:
-
-```javascript
-const BASE_URL = "http://localhost:3000";
-```
-
 ## Running the Application
 
 ### Start the Backend Server:
