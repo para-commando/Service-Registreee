@@ -2,6 +2,12 @@
 
 Service Registree is a full-stack web application designed to manage any service-related details efficiently. It allows users to create, read, update, and delete (CRUD) services, offering a seamless user experience for managing services in a centralized platform.
 
+## Demo
+
+## Web View
+
+## Mobile View
+
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Features](#features)
@@ -11,9 +17,6 @@ Service Registree is a full-stack web application designed to manage any service
 - [Running the Application](#running-the-application)
 - [Project Structure](#project-structure)
 - [API Documentation](#api-documentation)
-- [User Interface](#user-interface)
-- [Authentication](#authentication)
-- [Testing](#testing)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact Information](#contact-information)
@@ -201,9 +204,13 @@ service-registree
 ### Endpoints
 
 **GET /services**: Fetch all services.
+
 **POST /services**: Create a new service.
+
 **GET /services/:id**: Get a specific service.
+
 **PUT /services/:id**: Update a service.
+
 **DELETE /services/:id**: Delete a service.
 
 ## Contributing
